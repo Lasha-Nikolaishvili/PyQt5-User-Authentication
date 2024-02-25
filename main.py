@@ -240,7 +240,7 @@ class MainWindow(object):
 
     def handle_submit(self):
         # Check form state
-        if self.username_input.text() == "1" and self.password_input.text() == "1":
+        if self.username_input.text() == "username123" and self.password_input.text() == "password123":
             self.display_submit_message("success")
 
             self.username = self.username_input.text()
