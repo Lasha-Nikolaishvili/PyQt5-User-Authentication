@@ -33,7 +33,6 @@ class MainWindow(object):
 
         self.login_form = QtWidgets.QWidget()
         self.login_form.setEnabled(True)
-        self.login_form.setGeometry(QtCore.QRect(420, 420, 321, 401))
         self.login_form.setFixedSize(321, 401)
         self.font = QtGui.QFont()
         self.font.setFamily("Segoe UI")
@@ -183,7 +182,14 @@ class MainWindow(object):
         self.login_v_layout.setStretch(2, 1)
         main_window.setCentralWidget(self.central_widget)
 
-        self.central_widget.addWidget(self.login_form)
+
+        self.login_page = QtWidgets.QWidget()
+        self.login_page_v_layout = QtWidgets.QVBoxLayout()
+        self.login_page_v_layout.addWidget(self.login_form)
+        self.login_page_v_layout.setAlignment(QtCore.Qt.AlignCenter)
+        self.login_page.setLayout(self.login_page_v_layout)
+
+        self.central_widget.addWidget(self.login_page)
 
         self.dashboard = QtWidgets.QWidget()
         self.dashboard_layout = QtWidgets.QVBoxLayout()
@@ -255,8 +261,8 @@ class MainWindow(object):
             self.display_submit_message("incorrect password")
 
         # Clear form
-        self.username_input.setText('')
-        self.password_input.setText('')
+        self.username_input.clear()
+        self.password_input.clear()
 
     def display_submit_message(self, msg):
         submit_message = QtWidgets.QMessageBox()
